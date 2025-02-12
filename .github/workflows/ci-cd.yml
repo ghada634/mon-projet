@@ -12,6 +12,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    # Vérification de la clé secrète avant d'exécuter les tests
+    - name: Vérifier la clé secrète
+      run: |
+        echo "Vérification de la clé secrète..."
+        if [ "${{ secrets.MY_SECRET_KEY }}" != "securite123" ]; then
+          echo "Échec de la vérification du mot de passe !"
+          exit 1  # Cela échouera le pipeline si la clé est incorrecte
+        else
+          echo "Clé secrète valide. Accès autorisé."
+        fi
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -20,8 +31,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Run tests
       run: |
         python main.py
+
 
