@@ -6,9 +6,8 @@ def hello_world(name="World"):
 
 def get_user_input():
     """Demande à l'utilisateur d'entrer son nom."""
-    name = input("Entrez votre nom (laisser vide pour 'World'): ").strip()
-    if not name:
-        name = "World"  # Valeur par défaut si l'utilisateur ne saisit rien
+    # Si le programme ne peut pas demander à l'utilisateur, utilise une valeur par défaut
+    name = "World"  # Valeur par défaut
     return name
 
 def main():
@@ -19,6 +18,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
