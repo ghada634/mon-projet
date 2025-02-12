@@ -1,23 +1,44 @@
-# main.py
+import math
 
-def hello_world(name="World"):
-    """Retourne un message de salutation personnalisé."""
-    return f"Hello, {name}!"
+# Fonctions pour effectuer les calculs
+def add(x, y):
+    return x + y
 
-def get_user_input():
-    """Demande à l'utilisateur d'entrer son nom."""
-    # Si le programme ne peut pas demander à l'utilisateur, utilise une valeur par défaut
-    name = "World"  # Valeur par défaut
-    return name
+def subtract(x, y):
+    return x - y
 
-def main():
-    """Point d'entrée du programme."""
-    name = get_user_input()
-    greeting = hello_world(name)
-    print(greeting)
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Erreur : Division par zéro"
+    return x / y
+
+def square_root(x):
+    if x < 0:
+        return "Erreur : Nombre négatif pour la racine carrée"
+    return math.sqrt(x)
+
+# Fonction pour exécuter des calculs
+def calculate():
+    # Valeurs d'exemple pour les tests
+    num1 = 10
+    num2 = 5
+
+    # Effectuer des calculs
+    print(f"Addition: {num1} + {num2} = {add(num1, num2)}")
+    print(f"Soustraction: {num1} - {num2} = {subtract(num1, num2)}")
+    print(f"Multiplication: {num1} * {num2} = {multiply(num1, num2)}")
+    print(f"Division: {num1} / {num2} = {divide(num1, num2)}")
+    
+    # Calcul de la racine carrée d'un nombre
+    num = 16
+    print(f"Racine carrée: √{num} = {square_root(num)}")
 
 if __name__ == "__main__":
-    main()
+    calculate()
+
 
 
 
