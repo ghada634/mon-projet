@@ -1,43 +1,29 @@
+import hashlib
 import math
 
-# Fonctions pour effectuer les calculs
-def add(x, y):
-    return x + y
+# Vérification de sécurité avec une clé secrète (à ajouter dans les secrets GitHub)
+SECRET_KEY = "changeme"  # Remplace ceci par une vraie clé dans un environnement sécurisé
 
-def subtract(x, y):
-    return x - y
+def hash_secret_key(key):
+    """Hash la clé secrète avec SHA-256 pour plus de sécurité."""
+    return hashlib.sha256(key.encode()).hexdigest()
 
-def multiply(x, y):
-    return x * y
+def complex_calculations():
+    """Effectue des calculs mathématiques avancés."""
+    result = sum(math.factorial(i) for i in range(1, 6))  # 1! + 2! + 3! + 4! + 5!
+    return result
 
-def divide(x, y):
-    if y == 0:
-        return "Erreur : Division par zéro"
-    return x / y
+def main():
+    """Fonction principale exécutant les fonctionnalités."""
+    hashed_key = hash_secret_key(SECRET_KEY)
+    print(f"Clé secrète hashée (sécurisée) : {hashed_key}")
 
-def square_root(x):
-    if x < 0:
-        return "Erreur : Nombre négatif pour la racine carrée"
-    return math.sqrt(x)
-
-# Fonction pour exécuter des calculs
-def calculate():
-    # Valeurs d'exemple pour les tests
-    num1 = 10
-    num2 = 5
-
-    # Effectuer des calculs
-    print(f"Addition: {num1} + {num2} = {add(num1, num2)}")
-    print(f"Soustraction: {num1} - {num2} = {subtract(num1, num2)}")
-    print(f"Multiplication: {num1} * {num2} = {multiply(num1, num2)}")
-    print(f"Division: {num1} / {num2} = {divide(num1, num2)}")
-    
-    # Calcul de la racine carrée d'un nombre
-    num = 16
-    print(f"Racine carrée: √{num} = {square_root(num)}")
+    result = complex_calculations()
+    print(f"Résultat des calculs complexes : {result}")
 
 if __name__ == "__main__":
-    calculate()
+    main()
+
 
 
 
